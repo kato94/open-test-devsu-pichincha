@@ -1,0 +1,6 @@
+{
+  "symbols.files.associations": {
+    "*.module.ts": "angular",
+    "*.service.ts": "angular"
+  }
+}
