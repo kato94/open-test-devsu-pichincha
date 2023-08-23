@@ -1,0 +1,59 @@
+<div class="product-table">
+  <table aria-describedby="">
+    <thead>
+      <tr>
+        <th>Logo</th>
+        <th>Nombre del producto</th>
+        <th>Descripción</th>
+        <th>Fecha de liberación</th>
+        <th>Fecha de reestructuración</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.logo }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.date_release | date:'MM/dd/yyyy' }}</td>
+        <td>{{ item.date_revision | date:'MM/dd/yyyy' }}</td>
+        <td>
+          <app-context-menu>
+            <button button>
+              <img src="assets/images/dots-vertical.svg" alt="Menu">
+            </button>
+
+            <ul menu class="context-menu">
+              <li (click)="onEdit(item)">Editar</li>
+              <li (click)="onDelete(item.id)">Eliminar</li>
+            </ul>
+          </app-context-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="product-table__pagination">
+    <div>
+      {{ results }} Resultados
+    </div>
+
+    <div class="product-table__pagination__arrows">
+      <select [(ngModel)]="itemsPerPage">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select>
+
+      <div class="product-table__pagination__arrows__buttons">
+        <button class="button button--rounded" [class.button--disabled]="!hasPreviousPage" [disabled]="!hasPreviousPage" (click)="currentPage = currentPage - 1">
+          <img src="assets/images/chevron-left.svg" alt="Anterior">
+        </button>
+        <button class="button button--rounded" [class.button--disabled]="!hasNextPage" [disabled]="!hasNextPage" (click)="currentPage = currentPage + 1">
+          <img src="assets/images/chevron-right.svg" alt="Siguiente">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

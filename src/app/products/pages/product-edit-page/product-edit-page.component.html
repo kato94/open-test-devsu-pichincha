@@ -1,1 +1,9 @@
-<p>product-edit-page works!</p>
+<div class="page-center container">
+  <app-product-form-component
+    title="Formulario de Registro"
+    toBack="/products"
+    (onSubmit)="onSubmit($event)"
+    [initFormValues]="product"
+  ></app-product-form-component>
+</div>
+

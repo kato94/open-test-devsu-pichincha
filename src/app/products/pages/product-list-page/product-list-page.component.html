@@ -1,71 +1,13 @@
 <div class="page-center container">
   <div class="product-list__header">
-    <app-input placeholder="Search..."></app-input>
+    <div class="input">
+      <input placeholder="Search..." [(ngModel)]="filterValue" />
+    </div>
 
-    <app-button toRoute="/products/add">Agregar</app-button>
+    <a routerLink="/products/add" class="button bg-primary">Agregar</a>
   </div>
+
   <div class="product-list__table">
-    <table aria-describedby="">
-      <thead>
-        <tr>
-          <th>Logo</th>
-          <th>Nombre del producto</th>
-          <th>Descripción</th>
-          <th>Fecha de liberación</th>
-          <th>Fecha de reestructuración</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>img</td>
-          <td>Producto 1</td>
-          <td>Descripción 1</td>
-          <td>01/01/2000</td>
-          <td>01/01/2000</td>
-          <td>
-            <button>
-              <img src="assets/images/dots-vertical.svg" alt="Menu">
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>img</td>
-          <td>Producto 1</td>
-          <td>Descripción 1</td>
-          <td>01/01/2000</td>
-          <td>01/01/2000</td>
-          <td>
-            <button>
-              <img src="assets/images/dots-vertical.svg" alt="Menu">
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>img</td>
-          <td>Producto 1</td>
-          <td>Descripción 1</td>
-          <td>01/01/2000</td>
-          <td>01/01/2000</td>
-          <td>
-            <button>
-              <img src="assets/images/dots-vertical.svg" alt="Menu">
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>img</td>
-          <td>Producto 1</td>
-          <td>Descripción 1</td>
-          <td>01/01/2000</td>
-          <td>01/01/2000</td>
-          <td>
-            <button>
-              <img src="assets/images/dots-vertical.svg" alt="Menu">
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <app-product-table-component [products]="products" [filterValue]="filterValue" (onRefresh)="getProducts()"></app-product-table-component>
   </div>
 </div>

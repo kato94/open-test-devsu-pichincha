@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <div class="product-form">
+    <a class="product-form__cancel" [routerLink]="toBack">
+      <img src="assets/images/arrow-left.svg" alt="close" />
+      Cancelar
+    </a>
+
+    <p class="product-form__title">
+      {{ title }}
+    </p>
+
+    <div class="product-form__body">
+      <app-input [form]="form" formName="id" label="ID" [disabled]="!!initFormValues"></app-input>
+
+      <app-input [form]="form" formName="name" label="Nombre"></app-input>
+
+      <app-input [form]="form" formName="description" label="Descripción"></app-input>
+
+      <app-input [form]="form" formName="logo" label="Logo"></app-input>
+
+      <app-input [form]="form" formName="date_release" label="Fecha Liberación" type="date"></app-input>
+
+      <app-input [form]="form" formName="date_revision" label="Fecha Revisión" [disabled]="true" type="date"></app-input>
+    </div>
+
+    <div class="product-form__actions">
+      <button class="button bg-secondary" type="button" (click)="resetForm()">
+        Reiniciar
+      </button>
+
+      <button class="button bg-primary" [class.button--disabled]="!form.valid" type="submit" [disabled]="!form.valid">
+        Enviar
+      </button>
+    </div>
+  </div>
+</form>
+

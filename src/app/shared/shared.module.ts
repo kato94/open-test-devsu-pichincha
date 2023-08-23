@@ -1,27 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
-import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
 import { InputDateComponent } from './input-date/input-date.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ContextMenuComponent } from './context-menu/context-menu.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    ButtonComponent,
     InputComponent,
     InputDateComponent,
+    ContextMenuComponent,
+    NotificationComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
   ],
   exports: [
     HeaderComponent,
-    ButtonComponent,
     InputComponent,
     InputDateComponent,
+    ContextMenuComponent,
+    NotificationComponent,
   ]
 })
 export class SharedModule { }
