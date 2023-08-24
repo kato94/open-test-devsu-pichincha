@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { validateDateInFuture } from 'src/app/core/validators/validators';
+import { validateFutureDateFromToday } from 'src/app/core/validators/validators';
 import { IdValidator } from '../../services/id-validator.service';
 import { Product } from '../../interfaces/product.interface';
 import { getNextYear } from 'src/app/core/utils/date.utils';
@@ -21,7 +21,7 @@ export class ProductFormComponentComponent {
     name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
     description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
     logo: ['', [Validators.required]],
-    date_release: ['', [Validators.required, validateDateInFuture]],
+    date_release: ['', [Validators.required, validateFutureDateFromToday]],
     date_revision: [''],
   });
 
@@ -48,6 +48,7 @@ export class ProductFormComponentComponent {
   }
 
   hasInitialValues() {
+    // if (this.initFormValues !== undefined) {
     if (this.initFormValues) {
       this.form.patchValue({
         ...this.initFormValues,

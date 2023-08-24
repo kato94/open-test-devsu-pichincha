@@ -1,6 +1,6 @@
 import { FormControl, ValidationErrors } from '@angular/forms';
 
-export const validateDateInFuture = (control: FormControl) => {
+export const validateFutureDateFromToday = (control: FormControl) => {
 
   if (!control.value) return null
 
@@ -16,12 +16,14 @@ export const validateDateInFuture = (control: FormControl) => {
   return { noDateInFuture: true };
 }
 
-export const validateMessages: ValidationErrors = {
+const validateMessages: ValidationErrors = {
   idExists: 'ID ya existe',
   required: 'Campo obligatório',
   minlength: ({ requiredLength }: { requiredLength: number }) => `Mínimo de ${requiredLength} carácteres`,
   maxlength: ({ requiredLength }: { requiredLength: number }) => `Máximo de ${requiredLength} carácteres`,
-  noDateInFuture: 'Fecha no puede ser antes de hoy'
+  noDateInFuture: 'Fecha no puede ser antes de hoy',
+
+  other: 'Error en el campo',
 }
 
 export const getValidationMessage = (error: ValidationErrors): string => {
@@ -33,7 +35,7 @@ export const getValidationMessage = (error: ValidationErrors): string => {
     if (typeof validationMessage === 'function') {
       messages = validationMessage(error[errorName]);
     } else {
-      messages = validationMessage;
+      messages = validationMessage || validateMessages['other'];
     }
   });
 

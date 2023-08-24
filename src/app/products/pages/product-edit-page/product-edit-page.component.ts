@@ -36,7 +36,7 @@ export class ProductEditPageComponent implements OnInit {
         this.router.navigate(['/products']);
         this.notificationService.addNotification('Producto actualizado');
       },
-      error: (error) => {
+      error: () => {
         this.notificationService.addNotification('No se pudo actualizar el producto');
       }
     });
