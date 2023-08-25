@@ -352,6 +352,22 @@ img, video
   display: none
 
 
+::-webkit-scrollbar
+  width: 0.7rem
+  height: 0.7rem
+
+::-webkit-scrollbar-track
+  background: #f1f1f1
+  border-radius: 1rem
+
+::-webkit-scrollbar-thumb
+  background: #888
+  border-radius: 1rem
+  transition: background 0.2s ease
+
+::-webkit-scrollbar-thumb:hover
+  background: #555
+
 /* ==========================================================================
    Typography
    ========================================================================== */
@@ -429,7 +445,7 @@ body
 .container
   max-width: 1200px
   margin: 0 auto
-  padding: 0 16px
+  padding: 1rem
 
 .bg-primary
   background: var(--color-primary)

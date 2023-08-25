@@ -2,9 +2,14 @@
   padding: 1rem
   background: #fff
   border-radius: 0.5rem
+  position: relative
+
+  &__content
+    overflow-x: auto
 
   table
     width: 100%
+    min-width: 50rem
     thead
       background: #f9fafc
       th
@@ -36,6 +41,8 @@
   &__pagination
     display: flex
     align-items: center
+    flex-wrap: wrap
+    gap: 0.5rem
     justify-content: space-between
     margin-top: 0.5rem
     padding-top: 0.5rem
@@ -58,3 +65,11 @@
         align-items: center
         gap: 0.5rem
 
+    @media screen and ( max-width: 768px )
+      flex-direction: column
+      align-items: flex-start
+
+      &__arrows
+        margin-bottom: 0.5rem
+        width: 100%
+        justify-content: space-between

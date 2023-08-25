@@ -1,39 +1,41 @@
 <div class="product-table">
-  <table aria-describedby="">
-    <thead>
-      <tr>
-        <th>Logo</th>
-        <th>Nombre del producto</th>
-        <th>Descripción</th>
-        <th>Fecha de liberación</th>
-        <th>Fecha de reestructuración</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of items">
-        <td>
-          <img [src]="item.logo" (error)="item.logo = 'assets/images/no-image.webp'" alt="Logo">
-        </td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.description }}</td>
-        <td>{{ item.date_release | date:'MM/dd/yyyy' }}</td>
-        <td>{{ item.date_revision | date:'MM/dd/yyyy' }}</td>
-        <td>
-          <app-context-menu>
-            <button button>
-              <img src="assets/images/dots-vertical.svg" alt="Menu">
-            </button>
+  <div class="product-table__content">
+    <table aria-describedby="">
+      <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Nombre del producto</th>
+          <th>Descripción</th>
+          <th>Fecha de liberación</th>
+          <th>Fecha de reestructuración</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>
+            <img [src]="item.logo" (error)="item.logo = 'assets/images/no-image.webp'" alt="Logo">
+          </td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.date_release | date:'MM/dd/yyyy' }}</td>
+          <td>{{ item.date_revision | date:'MM/dd/yyyy' }}</td>
+          <td>
+            <app-context-menu>
+              <button button>
+                <img src="assets/images/dots-vertical.svg" alt="Menu">
+              </button>
 
-            <ul menu class="context-menu">
-              <li (click)="onEdit(item)">Editar</li>
-              <li (click)="onDelete(item.id)">Eliminar</li>
-            </ul>
-          </app-context-menu>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+              <ul menu class="context-menu">
+                <li (click)="onEdit(item)">Editar</li>
+                <li (click)="onDelete(item.id)">Eliminar</li>
+              </ul>
+            </app-context-menu>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="product-table__pagination">
     <div>
