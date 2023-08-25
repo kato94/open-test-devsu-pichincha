@@ -13,7 +13,7 @@
     <tbody>
       <tr *ngFor="let item of items">
         <td>
-          <img [src]="item.logo" alt="Logo">
+          <img [src]="item.logo" (error)="item.logo = 'assets/images/no-image.webp'" alt="Logo">
         </td>
         <td>{{ item.name }}</td>
         <td>{{ item.description }}</td>

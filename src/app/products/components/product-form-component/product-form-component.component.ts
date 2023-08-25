@@ -48,7 +48,6 @@ export class ProductFormComponentComponent {
   }
 
   hasInitialValues() {
-    // if (this.initFormValues !== undefined) {
     if (this.initFormValues) {
       this.form.patchValue({
         ...this.initFormValues,

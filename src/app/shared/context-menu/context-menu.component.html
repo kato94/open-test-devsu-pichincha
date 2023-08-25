@@ -1,7 +1,7 @@
 <div class="context-menu-trigger" (click)="toggleContextMenu()">
   <ng-content select="[button]"></ng-content>
 
-  <div class="context-menu-content" *ngIf="showContextMenu" [@slideInOut]>
+  <div class="context-menu-content" *ngIf="showContextMenu" (document:click)="onClickOutside($event)" [@slideInOut]>
     <ng-content select="[menu]"></ng-content>
   </div>
 </div>

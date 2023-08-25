@@ -29,9 +29,9 @@ export class ProductsService {
     return this.http.put<Product>('/bp/products', product);
   }
 
-  deleteProduct(id: string): Observable<boolean> {
+  deleteProduct(id: string): Observable<string> {
     const params = new HttpParams().set('id', id);
 
-    return this.http.delete<boolean>('/bp/products/', params);
+    return this.http.delete<string>('/bp/products', params);
   }
 }

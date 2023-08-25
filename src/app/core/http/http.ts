@@ -8,8 +8,8 @@ import { environments } from 'src/environments/environments';
 })
 export class HttpService {
 
-  private baseUrl: string = environments.baseUrl;
-  private headers = new HttpHeaders({ authorId: environments.authorId });
+  public baseUrl: string = environments.baseUrl;
+  public headers = new HttpHeaders({ authorId: environments.authorId });
 
   constructor(private httpClient: HttpClient) { }
 

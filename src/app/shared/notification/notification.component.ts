@@ -10,6 +10,10 @@ export class NotificationComponent {
   notifications: string[] = [];
 
   constructor(private notificationService: NotificationService) {
+    this.subscribeToNotifications();
+  }
+
+  subscribeToNotifications() {
     this.notificationService.notifications$.subscribe((message) => {
       this.notifications.push(message);
       setTimeout(() => {

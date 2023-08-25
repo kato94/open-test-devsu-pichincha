@@ -12,13 +12,18 @@ $ npm install
 
 ```bash
 
-$ ng serve
+$ npm run start
 
 ```
-
 
 ## Build
 
 ```bash
-$ ng build
+$ npm run build
+```
+
+## Test
+
+```bash
+$ npm run test --code-coverage
 ```

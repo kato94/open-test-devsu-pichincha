@@ -17,6 +17,8 @@ export class ProductTableComponentComponent {
 
   public itemsPerPage = 5;
   public currentPage = 1;
+  public deleteProductSuccessMessage = 'Producto eliminado';
+  public deleteProductErrorMessage = 'No se pudo eliminar el producto';
 
   constructor(
     private productsService: ProductsService,
@@ -65,8 +67,11 @@ export class ProductTableComponentComponent {
 
   onDelete(id: string): void {
     this.productsService.deleteProduct(id).subscribe({
-      next: () => this.onRefresh.emit(true),
-      error: () => this.notificationService.addNotification('No se pudo eliminar el producto')
+      next: () => {
+        this.onRefresh.emit(true);
+        this.notificationService.addNotification(this.deleteProductSuccessMessage);
+      },
+      error: () => this.notificationService.addNotification(this.deleteProductErrorMessage)
     });
   }
 }

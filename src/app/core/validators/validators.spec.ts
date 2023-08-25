@@ -57,10 +57,22 @@ describe('Validators', () => {
 
   it('getValidationMessage: Must return string when sending unmapped error', () => {
 
-    const error: ValidationErrors = { other: true };
+    const error: ValidationErrors = { others: true };
 
     const res = getValidationMessage(error);
 
     expect(typeof res).toBe('string');
+  });
+
+  it('getValidationMessage: Must return a string when sending minlength and maxlength', () => {
+
+    const errorMinlength: ValidationErrors = { minlength: { requiredLength: 1 } };
+    const errorMaxlength: ValidationErrors = { maxlength: { requiredLength: 1 } };
+
+    const resMinlength = getValidationMessage(errorMinlength);
+    const resMaxlength = getValidationMessage(errorMaxlength);
+
+    expect(typeof resMinlength).toBe('string');
+    expect(typeof resMaxlength).toBe('string');
   });
 });

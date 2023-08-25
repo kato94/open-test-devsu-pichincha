@@ -12,6 +12,8 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 export class ProductEditPageComponent implements OnInit {
 
   public product?: Product;
+  public updateProductSuccessMessage = 'Producto actualizado';
+  public updateProductErrorMessage = 'No se pudo actualizar el producto';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +23,10 @@ export class ProductEditPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.setProduct();
+  }
+
+  setProduct() {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params['data']) {
         this.product = JSON.parse(params['data']);
@@ -34,10 +40,10 @@ export class ProductEditPageComponent implements OnInit {
     this.productsService.updateProduct(event).subscribe({
       next: () => {
         this.router.navigate(['/products']);
-        this.notificationService.addNotification('Producto actualizado');
+        this.notificationService.addNotification(this.updateProductSuccessMessage);
       },
       error: () => {
-        this.notificationService.addNotification('No se pudo actualizar el producto');
+        this.notificationService.addNotification(this.updateProductErrorMessage);
       }
     });
   }

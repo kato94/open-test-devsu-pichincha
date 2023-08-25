@@ -12,6 +12,7 @@ export class ProductListPageComponent implements OnInit {
 
   public products: Product[] = [];
   public filterValue = '';
+  public getProductsErrorMessage = 'No se pudieron obtener los productos';
 
   constructor(
     private productsService: ProductsService,
@@ -25,7 +26,7 @@ export class ProductListPageComponent implements OnInit {
   getProducts() {
     this.productsService.getProducts().subscribe({
       next: (products) => this.products = products,
-      error: () => this.notificationService.addNotification('No se pudieron obtener los productos')
+      error: () => this.notificationService.addNotification(this.getProductsErrorMessage)
     });
   }
 

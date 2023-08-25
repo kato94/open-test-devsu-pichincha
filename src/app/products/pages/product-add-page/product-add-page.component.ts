@@ -11,6 +11,9 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 })
 export class ProductAddPageComponent {
 
+  public addProductSuccessMessage = 'Producto creado';
+  public addProductErrorMessage = 'No se pudo crear el producto';
+
   constructor(
     private productsService: ProductsService,
     private router: Router,
@@ -21,10 +24,10 @@ export class ProductAddPageComponent {
     this.productsService.createProduct(event).subscribe({
       next: () => {
         this.router.navigate(['/products']);
-        this.notificationService.addNotification('Producto creado');
+        this.notificationService.addNotification(this.addProductSuccessMessage);
       },
-      error: (error) => {
-        this.notificationService.addNotification('No se pudo crear el producto');
+      error: () => {
+        this.notificationService.addNotification(this.addProductErrorMessage);
       }
     });
   }

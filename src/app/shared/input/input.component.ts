@@ -17,7 +17,7 @@ export class InputComponent {
   @Input() type: string = 'text';
 
   get isInvalidField(): boolean {
-    return (this.form.get(this.formName)?.touched  && this.form.get(this.formName)?.errors) as boolean;
+    return (this.form.get(this.formName)?.touched && !this.form.get(this.formName)?.valid) as boolean;
   }
 
   get getErrorMessage(): string {
