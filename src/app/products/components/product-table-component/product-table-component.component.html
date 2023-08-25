@@ -8,7 +8,7 @@
           <th>Descripción</th>
           <th>Fecha de liberación</th>
           <th>Fecha de reestructuración</th>
-          <th></th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -43,7 +43,7 @@
     </div>
 
     <div class="product-table__pagination__arrows">
-      <select [(ngModel)]="itemsPerPage">
+      <select [(ngModel)]="itemsPerPage" aria-label="Producto por página">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="25">25</option>
